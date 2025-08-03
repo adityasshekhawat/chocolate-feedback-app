@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore'
 import { db } from '../firebase/config'
-import { Box, Container, Heading, Text, VStack, HStack, Badge } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, HStack, Badge } from '@chakra-ui/react'
 import type { StoredFeedbackData } from '../services/feedbackService'
 
 interface FeedbackEntry extends Omit<StoredFeedbackData, 'submittedAt'> {
@@ -79,7 +79,7 @@ const AdminDashboard = () => {
 
   return (
     <Container maxW="container.lg" py={10}>
-      <VStack spacing={8}>
+      <Box display="flex" flexDirection="column" gap={8}>
         <Box textAlign="center">
           <Heading size="xl" mb={2}>Chocolate Feedback Dashboard 🍫</Heading>
           <Text color="gray.600">Total responses: {feedback.length}</Text>
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
             No feedback yet. Share your QR code to get started! 📱
           </Text>
         ) : (
-          <VStack spacing={6} width="100%">
+          <Box display="flex" flexDirection="column" gap={6} width="100%">
             {feedback.map((entry) => (
               <Box
                 key={entry.id}
@@ -112,14 +112,14 @@ const AdminDashboard = () => {
                       <Text color="gray.600" fontSize="sm">{entry.phone}</Text>
                     )}
                   </Box>
-                  <VStack align="end" spacing={1}>
+                  <Box display="flex" flexDirection="column" alignItems="end" gap={1}>
                     <Badge colorScheme={getRatingColor(entry.rating)} variant="solid">
                       {getRatingStars(entry.rating)} ({entry.rating}/5)
                     </Badge>
                     <Text fontSize="xs" color="gray.500">
                       {entry.submittedAt.toLocaleDateString()} at {entry.submittedAt.toLocaleTimeString()}
                     </Text>
-                  </VStack>
+                  </Box>
                 </HStack>
 
                 {entry.favoriteProduct && (
@@ -143,9 +143,9 @@ const AdminDashboard = () => {
                 </Box>
               </Box>
             ))}
-          </VStack>
+          </Box>
         )}
-      </VStack>
+      </Box>
     </Container>
   )
 }
