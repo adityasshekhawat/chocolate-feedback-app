@@ -520,11 +520,11 @@ const FeedbackForm = () => {
                     onBlur={(e) => Object.assign(e.target.style, inputStyle)}
                   >
                     <option value="">Choose your fave</option>
-                    <option value="dark">🖤 Dark Chocolate (the OG)</option>
-                    <option value="milk">🤎 Milk Chocolate (classic vibes)</option>
-                    <option value="white">🤍 White Chocolate (controversial but valid)</option>
-                    <option value="hazelnut">🌰 Hazelnut (nutty choice)</option>
-                    <option value="almond">🥜 Almond (crunchy queen)</option>
+                    <option value="dark-original">🖤 Dark Chocolate (the OG)</option>
+                    <option value="dark-pistachio">🖤🥜 Pistachio Dark Chocolate</option>
+                    <option value="dark-nutty">🖤🥜 Dark Nutty Chocolate</option>
+                    <option value="rose-white">🤍🌹 Rose White Chocolate</option>
+                    <option value="pistachio-rose-milk">🤎🌹 Pistachio Rose Milk Chocolate</option>
                   </select>
                 </Box>
 
